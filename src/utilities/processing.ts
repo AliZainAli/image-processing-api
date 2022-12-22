@@ -3,7 +3,7 @@ import sharp from 'sharp'
 import fs from 'fs'
 import path from 'path'
 
-export const imageProcessing = (fileName: string, width:string, height:string) => {
+export const imageProcessing = async (fileName: string, width:string, height:string) => {
   const img = path.join(__dirname, '../images/full/' + fileName + '.jpg') // input image
   const imageWidth = parseInt(width as string)
   const imageHeight = parseInt(height as string)
@@ -16,13 +16,12 @@ export const imageProcessing = (fileName: string, width:string, height:string) =
   } else {
     console.log('resizing')
     try {
-      sharp(img)
+      await sharp(img)
         .resize(imageWidth, imageHeight)
         .toFile(outputImage)
-        .then(() => {
         return outputImage
-    })
     } catch (error) {
+        // console.log(error)
         return false
     }
   }

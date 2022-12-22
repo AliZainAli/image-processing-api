@@ -8,17 +8,16 @@ import path from 'path'
 const req = supertest(app)
 
 describe('Test Image processing function', () => {
-
-//   it('this test is for image processing and should return true', () => {
-//     imageProcessing('fjord', '200', '200', express.response);
-//     const outputImage = fs.existsSync(path.join(__dirname, '../images/thumb/fjord_200_200.jpg'))
-//     expect(outputImage).toBeTruthy()
-//   })
-
-//   it('this test is for image processing and should return false"', () => {
-//     const result = imageProcessing('fjord', '200', 'sadasd', express.response);
-//     expect(result).toBeFalsy()
-//   })
+    
+  it('this test is for image processing and should return true', async () => {
+    const outputImage = await imageProcessing('fjord', '200', '200');
+    expect(outputImage).toBeTruthy()
+  })
+  
+  it('this test is for image processing and should return false"', async () => {
+    const result = await imageProcessing('fjord', '200', 'sadasd');
+    expect(result).toBeFalsy()
+  })
 })
 
 describe('Test endpoint response', () => {
